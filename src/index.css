@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* URTFMS - Official AAU Design System
+   Addis Ababa University Official Branding
+   Primary: AAU Teal Blue (#0077B6)
+   Secondary: AAU Dark Blue (#023E8A)
+   Accent: AAU Red (#C1272D)
+   Neutral: Clean White & Gray
+*/
+
+@layer base {
+  :root {
+    /* AAU Primary - Teal Blue (from official website) */
+    --primary: 199 100% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    /* AAU Blue - Primary branding color */
+    --aau-blue: 199 100% 36%;
+    --aau-blue-foreground: 0 0% 100%;
+
+    /* AAU Red - Restored for Specific Branding Text */
+    --aau-red: 358 79% 47%;
+    --aau-red-foreground: 0 0% 100%;
+
+    /* Background & Surfaces - Clean White */
+    --background: 210 20% 98%;
+    --foreground: 210 40% 15%;
+
+    /* Cards - Pure White */
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 15%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 15%;
+
+    /* Secondary - Light Blue Tint */
+    --secondary: 199 60% 95%;
+    --secondary-foreground: 199 100% 30%;
+
+    /* Muted - Soft Gray */
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 15% 45%;
+
+    /* Accent - AAU Blue tint */
+    --accent: 199 70% 95%;
+    --accent-foreground: 199 100% 36%;
+
+    /* Destructive - Error Red */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success - Green */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning - Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Info - Blue */
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 199 100% 36%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar - AAU Dark Blue */
+    --sidebar-background: 210 94% 22%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 210 94% 22%;
+    --sidebar-accent: 210 80% 28%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 210 70% 32%;
+    --sidebar-ring: 199 100% 60%;
+
+    /* AAU Blue Gradient for hero sections */
+    --gradient-aau: linear-gradient(135deg, hsl(199 100% 36%) 0%, hsl(210 94% 28%) 100%);
+
+    /* Custom Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(210 40% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(210 40% 15% / 0.08), 0 2px 4px -2px hsl(210 40% 15% / 0.04);
+    --shadow-lg: 0 10px 15px -3px hsl(210 40% 15% / 0.08), 0 4px 6px -4px hsl(210 40% 15% / 0.04);
+  }
+
+  .dark {
+    --primary: 199 80% 55%;
+    --primary-foreground: 210 94% 15%;
+
+    --aau-dark: 210 80% 35%;
+    --aau-dark-foreground: 0 0% 100%;
+
+    --aau-red: 358 70% 55%;
+    --aau-red-foreground: 0 0% 100%;
+
+    --background: 210 50% 8%;
+    --foreground: 210 20% 94%;
+
+    --card: 210 50% 12%;
+    --card-foreground: 210 20% 94%;
+
+    --popover: 210 50% 12%;
+    --popover-foreground: 210 20% 94%;
+
+    --secondary: 210 50% 18%;
+    --secondary-foreground: 199 80% 70%;
+
+    --muted: 210 40% 15%;
+    --muted-foreground: 210 20% 60%;
+
+    --accent: 358 50% 20%;
+    --accent-foreground: 358 70% 70%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 40% 20%;
+    --input: 210 40% 20%;
+    --ring: 199 80% 55%;
+
+    --sidebar-background: 210 50% 6%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 199 80% 55%;
+    --sidebar-primary-foreground: 210 50% 6%;
+    --sidebar-accent: 210 50% 12%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 210 40% 15%;
+    --sidebar-ring: 199 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight text-foreground;
+  }
+
+  h1 {
+    @apply text-3xl lg:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl lg:text-2xl;
+  }
+
+  h4 {
+    @apply text-lg lg:text-xl;
+  }
+}
+
+@layer components {
+
+  /* AAU Blue Header/Banner Styles */
+  .aau-header {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .aau-gradient {
+    background: linear-gradient(135deg, hsl(199 100% 36%) 0%, hsl(210 94% 28%) 100%);
+  }
+
+  /* Stat Card Styles */
+  .stat-card {
+    @apply bg-card rounded-lg border border-border p-6 shadow-sm transition-all duration-200 hover:shadow-md hover:border-primary/20;
+  }
+
+  .stat-card-primary {
+    @apply bg-primary text-primary-foreground rounded-lg p-6 shadow-md;
+  }
+
+  /* Table Container */
+  .table-container {
+    @apply bg-card rounded-lg border border-border overflow-hidden shadow-sm;
+  }
+
+  /* Page Header */
+  .page-header {
+    @apply mb-6 space-y-1;
+  }
+
+  .page-title {
+    @apply text-2xl font-semibold text-foreground;
+  }
+
+  .page-description {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Navigation Link Active State */
+  .nav-link-active {
+    @apply bg-sidebar-accent text-sidebar-accent-foreground;
+  }
+
+  /* AAU Card with blue left border accent */
+  .aau-card {
+    @apply bg-card rounded-lg border border-border shadow-sm border-l-4 border-l-primary;
+  }
+
+  /* AAU Card with red left border accent */
+  .aau-card-red {
+    @apply bg-card rounded-lg border border-border shadow-sm border-l-4 border-l-aau-red;
+  }
+
+  /* AAU Gold accent */
+  .aau-gold-accent {
+    @apply border-l-4;
+    border-left-color: hsl(40 58% 56%);
+  }
+}
+
+/* Custom Scrollbar - AAU themed */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/50;
+}
