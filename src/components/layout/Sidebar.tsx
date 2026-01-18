@@ -35,16 +35,6 @@ interface NavigationItem {
 const adminNavigation: NavigationItem[] = [
   { title: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" },
   { title: "User Management", icon: Users, href: "/admin/users" },
-  { 
-    title: "Institutional Management", 
-    icon: Building2, 
-    href: "/admin/institutional/campuses",
-    submenu: [
-      { title: "Manage Campuses", icon: Building2, href: "/admin/institutional/campuses" },
-      { title: "Manage Schools", icon: GraduationCap, href: "/admin/institutional/schools" },
-      { title: "Manage Departments", icon: Users, href: "/admin/institutional/departments" }
-    ]
-  },
   { title: "Roles & Permissions", icon: Shield, href: "/admin/roles" },
   { title: "Audit Logs", icon: FileText, href: "/admin/audit-logs" },
   { title: "System Settings", icon: Settings, href: "/admin/settings" },
