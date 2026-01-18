@@ -192,6 +192,14 @@ const PublicHome = () => {
                 </div>
             </section>
 
+            {/* TEST SECTION - This should be visible */}
+            <section className="py-10 bg-red-100">
+                <div className="max-w-7xl mx-auto px-4 text-center">
+                    <h2 className="text-2xl font-bold text-red-600 mb-4">TEST: This should be visible!</h2>
+                    <p className="text-red-500">If you can see this, the changes are working.</p>
+                </div>
+            </section>
+
             {/* Signup Card Section */}
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4">
