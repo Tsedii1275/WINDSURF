@@ -3,13 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle2, UserPlus, FileText } from "lucide-react";
+import { CheckCircle2, UserPlus } from "lucide-react";
 import { useAuth } from "@/providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const Registration = () => {
-    const [mode, setMode] = useState<"apply" | "signup">("apply");
     const [submitted, setSubmitted] = useState(false);
     const { signup, isLoading } = useAuth();
     const navigate = useNavigate();
@@ -34,11 +33,6 @@ const Registration = () => {
         }
     };
 
-    const handleApply = (e: React.FormEvent) => {
-        e.preventDefault();
-        setSubmitted(true);
-    };
-
     if (submitted) {
         return (
             <div className="max-w-xl mx-auto px-4 py-24 text-center animate-fade-in">
@@ -58,33 +52,16 @@ const Registration = () => {
 
     return (
         <div className="max-w-3xl mx-auto px-4 py-16 animate-fade-in">
-            <div className="flex border-b-2 border-gray-100 mb-12">
-                <button
-                    onClick={() => setMode("apply")}
-                    className={`flex-1 py-4 text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 border-b-4 transition-all ${mode === "apply" ? "border-aau-blue text-aau-blue bg-blue-50/50" : "border-transparent text-gray-400 hover:text-gray-600"}`}
-                >
-                    <FileText className="h-4 w-4" /> Quick Application
-                </button>
-                <button
-                    onClick={() => setMode("signup")}
-                    className={`flex-1 py-4 text-sm font-bold uppercase tracking-widest flex items-center justify-center gap-2 border-b-4 transition-all ${mode === "signup" ? "border-aau-blue text-aau-blue bg-blue-50/50" : "border-transparent text-gray-400 hover:text-gray-600"}`}
-                >
-                    <UserPlus className="h-4 w-4" /> Create Account
-                </button>
-            </div>
-
             <div className="mb-8">
                 <h1 className="text-3xl font-black text-gray-900 uppercase tracking-tight">
-                    {mode === "apply" ? "Instant Registration" : "Join the AAU Portal"}
+                    Join AAU Portal
                 </h1>
                 <p className="text-gray-600 mt-2 font-medium">
-                    {mode === "apply"
-                        ? "Submit a quick request for training or facilities without an account."
-                        : "Create an account to track your applications, view statuses, and manage your rentals."}
+                    Create an account to track your applications, view statuses, and manage your rentals.
                 </p>
             </div>
 
-            <form onSubmit={mode === "apply" ? handleApply : handleSignup} className="space-y-8 bg-white border border-gray-200 p-8 md:p-12 shadow-sm">
+            <form onSubmit={handleSignup} className="space-y-8 bg-white border border-gray-200 p-8 md:p-12 shadow-sm">
                 <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-2">
                         <Label htmlFor="fullname" className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Full Name *</Label>
@@ -156,7 +133,7 @@ const Registration = () => {
                         className="w-full h-14 bg-aau-blue hover:bg-blue-900 text-white rounded-none font-bold uppercase tracking-widest text-xs"
                         disabled={isLoading}
                     >
-                        {isLoading ? "Processing..." : mode === "apply" ? "Submit Application" : "Create Account"}
+                        {isLoading ? "Processing..." : "Create Account"}
                     </Button>
                     <p className="text-[10px] text-gray-400 text-center mt-4 uppercase tracking-tighter">
                         By proceeding, you agree to AAU's resource usage terms and privacy guidelines.
