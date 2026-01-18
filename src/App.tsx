@@ -12,7 +12,6 @@ import { PublicLayout } from "@/components/layout/PublicLayout";
 // Admin Pages
 import Dashboard from "./pages/admin/Dashboard";
 import UserManagement from "./pages/admin/UserManagement";
-import CampusManagement from "./pages/admin/CampusManagement";
 import RolesPermissions from "./pages/admin/RolesPermissions";
 import AuditLogs from "./pages/admin/AuditLogs";
 import SystemSettings from "./pages/admin/SystemSettings";
@@ -99,7 +98,6 @@ const App = () => (
               >
                 <Route path="/admin/dashboard" element={<Dashboard />} />
                 <Route path="/admin/users" element={<UserManagement />} />
-                <Route path="/admin/campuses" element={<CampusManagement />} />
                 <Route path="/admin/roles" element={<RolesPermissions />} />
                 <Route path="/admin/audit-logs" element={<AuditLogs />} />
                 <Route path="/admin/settings" element={<SystemSettings />} />
