@@ -40,27 +40,27 @@ const adminNavigation: NavigationItem[] = [
   { title: "System Settings", icon: Settings, href: "/admin/settings" },
 ];
 
-const officeNavigation: NavigationItem[] = [
-  { title: "Dashboard", icon: LayoutDashboard, href: "/office/dashboard" },
+const campusNavigation: NavigationItem[] = [
+  { title: "Dashboard", icon: LayoutDashboard, href: "/campus/dashboard" },
   { 
     title: "Request Management", 
     icon: Home, 
-    href: "/office/requests/trainings",
+    href: "/campus/requests/trainings",
     submenu: [
-      { title: "Training Requests", icon: BookOpen, href: "/office/requests/trainings" },
-      { title: "Rental Requests", icon: Building, href: "/office/requests/rentals" }
+      { title: "Training Requests", icon: BookOpen, href: "/campus/requests/trainings" },
+      { title: "Rental Requests", icon: Building, href: "/campus/requests/rentals" }
     ]
   },
   { 
     title: "Resource Management", 
     icon: Plus, 
-    href: "/office/trainings/manage",
+    href: "/campus/trainings/manage",
     submenu: [
-      { title: "Manage Trainings", icon: Edit, href: "/office/trainings/manage" },
-      { title: "Manage Facilities", icon: Edit, href: "/office/facilities/manage" }
+      { title: "Manage Trainings", icon: Edit, href: "/campus/trainings/manage" },
+      { title: "Manage Facilities", icon: Edit, href: "/campus/facilities/manage" }
     ]
   },
-  { title: "Reports", icon: BarChart3, href: "/office/reports" },
+  { title: "Reports", icon: BarChart3, href: "/campus/reports" },
 ];
 
 interface SidebarProps {
@@ -75,8 +75,8 @@ export function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobileOpen }: 
   const isMobile = useIsMobile();
   const { role } = useAuth();
 
-  const navigationItems = role === "SYSTEM_ADMIN" ? adminNavigation : officeNavigation;
-  const portalName = role === "SYSTEM_ADMIN" ? "System Administrator Portal" : "Office User Portal";
+  const navigationItems = role === "SYSTEM_ADMIN" ? adminNavigation : campusNavigation;
+  const portalName = role === "SYSTEM_ADMIN" ? "System Administrator Portal" : "Campus Admin Portal";
 
   const handleNavClick = () => {
     if (isMobile) {

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-export type Role = "SYSTEM_ADMIN" | "OFFICE_USER" | "PUBLIC";
+export type Role = "SYSTEM_ADMIN" | "CAMPUS_ADMIN" | "PUBLIC";
 
 interface User {
     id: string;
@@ -38,8 +38,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         // Mock login logic
         return new Promise<void>((resolve) => {
             setTimeout(() => {
-                let role: Role = "OFFICE_USER";
-                let name = "Office User";
+                let role: Role = "CAMPUS_ADMIN";
+                let name = "Campus Admin";
 
                 if (email.includes("admin")) {
                     role = "SYSTEM_ADMIN";

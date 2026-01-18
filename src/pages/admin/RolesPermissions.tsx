@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Shield, Users, Building2, FileText, Settings, DollarSign, Eye, Edit, Trash, Plus } from "lucide-react";
 
 const roles = [
-  { id: "office", name: "Office User", icon: Users, users: 7, description: "Manage training and facility requests" },
+  { id: "campus", name: "Campus Admin", icon: Users, users: 7, description: "Manage training and facility requests" },
 ];
 
 const permissionGroups = [

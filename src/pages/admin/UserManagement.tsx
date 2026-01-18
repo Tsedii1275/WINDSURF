@@ -51,13 +51,13 @@ import { useUsers, useCreateUser, useUpdateUser, useResetPassword, useUpdateUser
 
 // Fallback mock data
 const mockUsers: User[] = [
-  { id: 1, name: "Abebe Kebede", email: "abebe.k@aau.edu.et", role: "Office User", status: "Active", campus: "Main Campus (6 Kilo)", avatar: "AK" },
-  { id: 2, name: "Sara Hailu", email: "sara.h@aau.edu.et", role: "Office User", status: "Active", campus: "Technology Campus", avatar: "SH" },
-  { id: 3, name: "Dawit Tesfaye", email: "dawit.t@aau.edu.et", role: "Office User", status: "Inactive", campus: "Science Campus", avatar: "DT" },
-  { id: 4, name: "Meron Alemu", email: "meron.a@aau.edu.et", role: "Office User", status: "Active", campus: "Main Campus (6 Kilo)", avatar: "MA" },
-  { id: 5, name: "Yonas Girma", email: "yonas.g@aau.edu.et", role: "Office User", status: "Active", campus: "Commerce Campus", avatar: "YG" },
-  { id: 6, name: "Tigist Bekele", email: "tigist.b@aau.edu.et", role: "Office User", status: "Active", campus: "Medical Campus", avatar: "TB" },
-  { id: 7, name: "Henok Tadesse", email: "henok.t@aau.edu.et", role: "Office User", status: "Active", campus: "Law Campus", avatar: "HT" },
+  { id: 1, name: "Abebe Kebede", email: "abeke.k@aau.edu.et", role: "Campus Admin", status: "Active", campus: "Main Campus (6 Kilo)", avatar: "AK" },
+  { id: 2, name: "Sara Hailu", email: "sara.h@aau.edu.et", role: "Campus Admin", status: "Active", campus: "Technology Campus", avatar: "SH" },
+  { id: 3, name: "Dawit Tesfaye", email: "dawit.t@aau.edu.et", role: "Campus Admin", status: "Inactive", campus: "Science Campus", avatar: "DT" },
+  { id: 4, name: "Meron Alemu", email: "meron.a@aau.edu.et", role: "Campus Admin", status: "Active", campus: "Main Campus (6 Kilo)", avatar: "MA" },
+  { id: 5, name: "Yonas Girma", email: "yonas.g@aau.edu.et", role: "Campus Admin", status: "Active", campus: "Commerce Campus", avatar: "YG" },
+  { id: 6, name: "Tigist Bekele", email: "tigist.b@aau.edu.et", role: "Campus Admin", status: "Active", campus: "Medical Campus", avatar: "TB" },
+  { id: 7, name: "Henok Tadesse", email: "henok.t@aau.edu.et", role: "Campus Admin", status: "Active", campus: "Law Campus", avatar: "HT" },
 ];
 
 interface UserFormData {
@@ -69,7 +69,7 @@ interface UserFormData {
 }
 
 const roles = [
-  "Office User",
+  "Campus Admin",
 ];
 
 const campuses = [
@@ -122,7 +122,7 @@ export default function UserManagement() {
     defaultValues: {
       name: "",
       email: "",
-      role: "Office User",
+      role: "Campus Admin",
       status: "Active",
       password: "",
     },
@@ -305,7 +305,7 @@ export default function UserManagement() {
           </div>
           <div>
             <p className="text-xs text-muted-foreground">Roles</p>
-            <p className="text-sm font-medium">Office User</p>
+            <p className="text-sm font-medium">Campus Admin</p>
           </div>
         </div>
       </div>

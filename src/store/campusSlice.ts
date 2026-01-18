@@ -177,7 +177,7 @@ const initialFacilities: Facility[] = [
   }
 ];
 
-interface OfficeState {
+interface CampusState {
   trainingRequests: TrainingRequest[];
   rentalRequests: RentalRequest[];
   trainings: Training[];
@@ -185,7 +185,7 @@ interface OfficeState {
   loading: boolean;
 }
 
-const initialState: OfficeState = {
+const initialState: CampusState = {
   trainingRequests: initialTrainingRequests,
   rentalRequests: initialRentalRequests,
   trainings: initialTrainings,
@@ -193,8 +193,8 @@ const initialState: OfficeState = {
   loading: false
 };
 
-const officeSlice = createSlice({
-  name: 'office',
+const campusSlice = createSlice({
+  name: 'campus',
   initialState,
   reducers: {
     // Training Request Actions
@@ -271,6 +271,6 @@ export const {
   updateFacility,
   deleteFacility,
   setLoading
-} = officeSlice.actions;
+} = campusSlice.actions;
 
-export default officeSlice.reducer;
+export default campusSlice.reducer;

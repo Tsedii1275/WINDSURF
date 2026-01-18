@@ -163,7 +163,7 @@ export function TopBar({ sidebarCollapsed = false, onMenuClick, showMenuButton =
               University Resource & Training Facility Management
             </h1>
             <p className="text-xs text-muted-foreground uppercase font-bold tracking-tight">
-              {role === "SYSTEM_ADMIN" ? "System Administrator Portal" : "Office User Portal"}
+              {role === "SYSTEM_ADMIN" ? "System Administrator Portal" : "Campus Admin Portal"}
             </p>
           </div>
         </div>

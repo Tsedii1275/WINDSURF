@@ -28,23 +28,23 @@ import PublicRentals from "./pages/public/PublicRentals";
 import Registration from "./pages/public/Registration";
 import PublicDashboard from "./pages/public/PublicDashboard";
 
-// Office Pages
-import OfficeDashboard from "./pages/office/OfficeDashboard";
-import TrainingApprovals from "./pages/office/TrainingApprovals";
-import FacilityRentals from "./pages/office/FacilityRentals";
-import OfficeReports from "./pages/office/OfficeReports";
+// Campus Pages
+import CampusDashboard from "./pages/campus/CampusDashboard";
+import CampusTrainingApprovals from "./pages/campus/CampusTrainingApprovals";
+import CampusFacilityRentals from "./pages/campus/CampusFacilityRentals";
+import CampusReports from "./pages/campus/CampusReports";
 
-// Office User - Request Management
-import TrainingRequests from "./pages/office/TrainingRequests";
-import RentalRequests from "./pages/office/RentalRequests";
-import TrainingRequestDetails from "./pages/office/TrainingRequestDetails";
-import RentalRequestDetails from "./pages/office/RentalRequestDetails";
+// Campus Admin - Request Management
+import CampusTrainingRequests from "./pages/campus/CampusTrainingRequests";
+import CampusRentalRequests from "./pages/campus/CampusRentalRequests";
+import CampusTrainingRequestDetails from "./pages/campus/CampusTrainingRequestDetails";
+import CampusRentalRequestDetails from "./pages/campus/CampusRentalRequestDetails";
 
-// Office User - Management
-import ManageTrainings from "./pages/office/ManageTrainings";
-import ManageFacilities from "./pages/office/ManageFacilities";
-import TrainingForm from "./pages/office/TrainingForm";
-import FacilityForm from "./pages/office/FacilityForm";
+// Campus Admin - Management
+import CampusManageTrainings from "./pages/campus/CampusManageTrainings";
+import CampusManageFacilities from "./pages/campus/CampusManageFacilities";
+import CampusTrainingForm from "./pages/campus/CampusTrainingForm";
+import CampusFacilityForm from "./pages/campus/CampusFacilityForm";
 
 const NotFound = () => <div className="p-8 text-center">404 - Page Not Found</div>;
 
@@ -78,7 +78,7 @@ const App = () => (
                 <Route
                   path="/public/dashboard"
                   element={
-                    <ProtectedRoute allowedRoles={["PUBLIC", "SYSTEM_ADMIN", "OFFICE_USER"]}>
+                    <ProtectedRoute allowedRoles={["PUBLIC", "SYSTEM_ADMIN", "CAMPUS_ADMIN"]}>
                       <PublicDashboard />
                     </ProtectedRoute>
                   }
@@ -107,32 +107,32 @@ const App = () => (
                 <Route path="/account-settings" element={<AccountSettings />} />
               </Route>
 
-              {/* Office Routes */}
+              {/* Campus Routes */}
               <Route
                 element={
-                  <ProtectedRoute allowedRoles={["OFFICE_USER", "SYSTEM_ADMIN"]}>
+                  <ProtectedRoute allowedRoles={["CAMPUS_ADMIN", "SYSTEM_ADMIN"]}>
                     <MainLayout />
                   </ProtectedRoute>
                 }
               >
-                <Route path="/office/dashboard" element={<OfficeDashboard />} />
-                <Route path="/office/trainings" element={<TrainingApprovals />} />
-                <Route path="/office/rentals" element={<FacilityRentals />} />
-                <Route path="/office/reports" element={<OfficeReports />} />
+                <Route path="/campus/dashboard" element={<CampusDashboard />} />
+                <Route path="/campus/trainings" element={<CampusTrainingApprovals />} />
+                <Route path="/campus/rentals" element={<CampusFacilityRentals />} />
+                <Route path="/campus/reports" element={<CampusReports />} />
                 
                 {/* Request Management */}
-                <Route path="/office/requests/trainings" element={<TrainingRequests />} />
-                <Route path="/office/requests/rentals" element={<RentalRequests />} />
-                <Route path="/office/requests/trainings/:id" element={<TrainingRequestDetails />} />
-                <Route path="/office/requests/rentals/:id" element={<RentalRequestDetails />} />
+                <Route path="/campus/requests/trainings" element={<CampusTrainingRequests />} />
+                <Route path="/campus/requests/rentals" element={<CampusRentalRequests />} />
+                <Route path="/campus/requests/trainings/:id" element={<CampusTrainingRequestDetails />} />
+                <Route path="/campus/requests/rentals/:id" element={<CampusRentalRequestDetails />} />
                 
                 {/* Management */}
-                <Route path="/office/trainings/manage" element={<ManageTrainings />} />
-                <Route path="/office/facilities/manage" element={<ManageFacilities />} />
-                <Route path="/office/trainings/create" element={<TrainingForm />} />
-                <Route path="/office/trainings/edit/:id" element={<TrainingForm />} />
-                <Route path="/office/facilities/create" element={<FacilityForm />} />
-                <Route path="/office/facilities/edit/:id" element={<FacilityForm />} />
+                <Route path="/campus/trainings/manage" element={<CampusManageTrainings />} />
+                <Route path="/campus/facilities/manage" element={<CampusManageFacilities />} />
+                <Route path="/campus/trainings/create" element={<CampusTrainingForm />} />
+                <Route path="/campus/trainings/edit/:id" element={<CampusTrainingForm />} />
+                <Route path="/campus/facilities/create" element={<CampusFacilityForm />} />
+                <Route path="/campus/facilities/edit/:id" element={<CampusFacilityForm />} />
                 
                 <Route path="/profile" element={<MyProfile />} />
                 <Route path="/account-settings" element={<AccountSettings />} />

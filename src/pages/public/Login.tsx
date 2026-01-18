@@ -53,8 +53,8 @@ const Login = () => {
         if (user) {
             if (user.role === "SYSTEM_ADMIN") {
                 navigate("/admin/dashboard");
-            } else if (user.role === "OFFICE_USER") {
-                navigate("/office/dashboard");
+            } else if (user.role === "CAMPUS_ADMIN") {
+                navigate("/campus/dashboard");
             } else if (user.role === "PUBLIC") {
                 navigate("/public/dashboard");
             }

@@ -15,7 +15,7 @@ const OfficeDashboard = () => {
     return (
         <div className="space-y-6 animate-fade-in">
             <PageHeader
-                title="Office Dashboard"
+                title="Campus Admin Dashboard"
                 description="Manage training programs and facility rentals for your department"
             />
 
