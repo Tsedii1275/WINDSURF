@@ -17,6 +17,7 @@ import {
   Home,
   Plus,
   Edit,
+  GraduationCap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -34,7 +35,16 @@ interface NavigationItem {
 const adminNavigation: NavigationItem[] = [
   { title: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" },
   { title: "User Management", icon: Users, href: "/admin/users" },
-  { title: "Campus Management", icon: Building2, href: "/admin/campuses" },
+  { 
+    title: "Institutional Management", 
+    icon: Building2, 
+    href: "/admin/institutional/campuses",
+    submenu: [
+      { title: "Manage Campuses", icon: Building2, href: "/admin/institutional/campuses" },
+      { title: "Manage Schools", icon: GraduationCap, href: "/admin/institutional/schools" },
+      { title: "Manage Departments", icon: Users, href: "/admin/institutional/departments" }
+    ]
+  },
   { title: "Roles & Permissions", icon: Shield, href: "/admin/roles" },
   { title: "Audit Logs", icon: FileText, href: "/admin/audit-logs" },
   { title: "System Settings", icon: Settings, href: "/admin/settings" },
@@ -119,7 +129,6 @@ export function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobileOpen }: 
               <div className="flex flex-col">
                 <span className="text-xs font-semibold text-aau-red uppercase">አዲስ አበባ ዩኒቨርሲቲ</span>
                 <span className="text-sm font-bold text-sidebar-foreground">ADDIS ABABA UNIVERSITY</span>
-                <span className="text-[10px] text-sidebar-foreground/60">SINCE 1950</span>
               </div>
             </div>
           ) : (

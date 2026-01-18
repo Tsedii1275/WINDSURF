@@ -16,6 +16,11 @@ import CampusManagement from "./pages/admin/CampusManagement";
 import RolesPermissions from "./pages/admin/RolesPermissions";
 import AuditLogs from "./pages/admin/AuditLogs";
 import SystemSettings from "./pages/admin/SystemSettings";
+
+// Institutional Management Pages
+import ManageCampuses from "./pages/admin/institutional/ManageCampuses";
+import ManageSchools from "./pages/admin/institutional/ManageSchools";
+import ManageDepartments from "./pages/admin/institutional/ManageDepartments";
 // Common Pages
 import MyProfile from "./pages/common/Profile";
 import AccountSettings from "./pages/common/AccountSettings";
@@ -99,6 +104,9 @@ const App = () => (
                 <Route path="/admin/dashboard" element={<Dashboard />} />
                 <Route path="/admin/users" element={<UserManagement />} />
                 <Route path="/admin/campuses" element={<CampusManagement />} />
+                <Route path="/admin/institutional/campuses" element={<ManageCampuses />} />
+                <Route path="/admin/institutional/schools" element={<ManageSchools />} />
+                <Route path="/admin/institutional/departments" element={<ManageDepartments />} />
                 <Route path="/admin/roles" element={<RolesPermissions />} />
                 <Route path="/admin/audit-logs" element={<AuditLogs />} />
                 <Route path="/admin/settings" element={<SystemSettings />} />

@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Info, Clock, CheckCircle2, XCircle, Building, Calendar, Users, MapPin, FileText } from "lucide-react";
+import { Info, Clock, CheckCircle2, XCircle, Building, Calendar, Users, MapPin, FileText, CreditCard, GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/providers/AuthProvider";
 import { useState } from "react";
@@ -13,6 +13,10 @@ const PublicDashboard = () => {
     const [selectedRental, setSelectedRental] = useState<any>(null);
     const [showTrainingDialog, setShowTrainingDialog] = useState(false);
     const [showRentalDialog, setShowRentalDialog] = useState(false);
+    const [showPaymentDialog, setShowPaymentDialog] = useState(false);
+    const [paymentItem, setPaymentItem] = useState<any>(null);
+    const [paymentType, setPaymentType] = useState<'training' | 'rental'>('training');
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<'chapa' | 'telebirr'>('chapa');
 
     const registeredTrainings = [
         {
@@ -26,7 +30,9 @@ const PublicDashboard = () => {
             duration: "12 weeks",
             schedule: "Mon, Wed, Fri - 6:00 PM to 8:00 PM",
             location: "Science Building, Room 301",
-            description: "Comprehensive course covering Python programming, data analysis, machine learning fundamentals, and real-world project implementation."
+            description: "Comprehensive course covering Python programming, data analysis, machine learning fundamentals, and real-world project implementation.",
+            price: 2500,
+            currency: "ETB"
         },
         {
             id: 2,
@@ -39,7 +45,9 @@ const PublicDashboard = () => {
             duration: "8 weeks",
             schedule: "Tue, Thu - 5:30 PM to 7:30 PM",
             location: "Admin Building, Hall A",
-            description: "Leadership development program focusing on strategic planning, public policy implementation, and organizational management."
+            description: "Leadership development program focusing on strategic planning, public policy implementation, and organizational management.",
+            price: 1800,
+            currency: "ETB"
         }
     ];
 
@@ -56,7 +64,25 @@ const PublicDashboard = () => {
             purpose: "Annual Department Meeting",
             capacity: "200 people",
             equipment: "Projector, Sound System, Microphones",
-            description: "Large conference hall suitable for meetings, presentations, and events with modern audio-visual equipment."
+            description: "Large conference hall suitable for meetings, presentations, and events with modern audio-visual equipment.",
+            price: 500,
+            currency: "ETB"
+        },
+        {
+            id: 2,
+            facility: "Computer Lab 301",
+            campus: "Main Campus",
+            dateRequested: "2025-01-10",
+            status: "Approved",
+            details: "Your booking has been confirmed. Please complete the payment to secure your reservation.",
+            requestedDate: "2025-02-20",
+            timeSlot: "9:00 AM - 1:00 PM",
+            purpose: "Training Workshop",
+            capacity: "30 people",
+            equipment: "Computers, Projector, Internet",
+            description: "Modern computer lab with 30 workstations, high-speed internet, and presentation equipment.",
+            price: 300,
+            currency: "ETB"
         }
     ];
 
@@ -92,15 +118,36 @@ const PublicDashboard = () => {
         setShowRentalDialog(true);
     };
 
+    const handlePayment = (item: any, type: 'training' | 'rental') => {
+        setPaymentItem(item);
+        setPaymentType(type);
+        setShowPaymentDialog(true);
+    };
+
+    const handleConfirmPayment = () => {
+        // Here you would integrate with actual payment processing
+        const paymentMethod = selectedPaymentMethod === 'chapa' ? 'Chapa' : 'Telebirr';
+        alert(`Payment of ${paymentItem.price} ${paymentItem.currency} for ${paymentType === 'training' ? paymentItem.title : paymentItem.facility} would be processed using ${paymentMethod}.`);
+        setShowPaymentDialog(false);
+        setPaymentItem(null);
+        setSelectedPaymentMethod('chapa'); // Reset to default
+    };
+
     return (
         <div className="min-h-screen bg-white">
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-8">
-                <div className="max-w-4xl mx-auto px-4">
-                    <h1 className="text-3xl font-bold mb-2">{user?.name}'s Dashboard</h1>
-                    <p className="text-blue-100 text-sm">Manage your training registrations and facility rental requests</p>
+            <section className="relative py-20 md:py-32 bg-gradient-to-br from-blue-50 to-white">
+                <div className="max-w-7xl mx-auto px-4 text-center">
+                    <div className="mb-12">
+                        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8">
+                            Your Dashboard
+                        </h1>
+                        <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">
+                            Manage your training registrations and facility rental requests. Track applications, view details, and complete payments all in one place.
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
             {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 py-8">
@@ -132,7 +179,7 @@ const PublicDashboard = () => {
                                             {t.details}
                                         </p>
                                     </div>
-                                    <div className="mt-4 flex justify-end">
+                                    <div className="mt-4 flex justify-end gap-3">
                                         <Button 
                                             variant="link" 
                                             className="text-blue-600 font-semibold uppercase tracking-widest text-[10px] hover:text-blue-700 transition-colors"
@@ -140,6 +187,15 @@ const PublicDashboard = () => {
                                         >
                                             View Program Details
                                         </Button>
+                                        {t.status === "Approved" && (
+                                            <Button 
+                                                className="bg-green-600 hover:bg-green-700 text-white font-semibold uppercase tracking-widest text-[10px] transition-colors flex items-center gap-2"
+                                                onClick={() => handlePayment(t, 'training')}
+                                            >
+                                                <CreditCard className="h-3 w-3" />
+                                                Pay Now
+                                            </Button>
+                                        )}
                                     </div>
                                 </CardContent>
                             </Card>
@@ -173,7 +229,7 @@ const PublicDashboard = () => {
                                             {r.details}
                                         </p>
                                     </div>
-                                    <div className="mt-4 flex justify-end">
+                                    <div className="mt-4 flex justify-end gap-3">
                                         <Button 
                                             variant="link" 
                                             className="text-green-600 font-semibold uppercase tracking-widest text-[10px] hover:text-green-700 transition-colors"
@@ -181,6 +237,15 @@ const PublicDashboard = () => {
                                         >
                                             View Booking Summary
                                         </Button>
+                                        {r.status === "Approved" && (
+                                            <Button 
+                                                className="bg-green-600 hover:bg-green-700 text-white font-semibold uppercase tracking-widest text-[10px] transition-colors flex items-center gap-2"
+                                                onClick={() => handlePayment(r, 'rental')}
+                                            >
+                                                <CreditCard className="h-3 w-3" />
+                                                Pay Now
+                                            </Button>
+                                        )}
                                     </div>
                                 </CardContent>
                             </Card>
@@ -372,6 +437,108 @@ const PublicDashboard = () => {
                                 </Button>
                                 <Button className="bg-green-600 hover:bg-green-700">
                                     Make New Booking
+                                </Button>
+                            </div>
+                        </div>
+                    )}
+                </DialogContent>
+            </Dialog>
+
+            {/* Payment Dialog */}
+            <Dialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
+                <DialogContent className="max-w-md">
+                    <DialogHeader>
+                        <DialogTitle className="text-2xl font-bold text-gray-900">
+                            Payment Confirmation
+                        </DialogTitle>
+                        <DialogDescription className="text-lg text-gray-600">
+                            Complete your payment to confirm your {paymentType === 'training' ? 'training registration' : 'facility booking'}
+                        </DialogDescription>
+                    </DialogHeader>
+                    {paymentItem && (
+                        <div className="space-y-6">
+                            <div className="bg-gray-50 p-4 rounded-lg">
+                                <h3 className="font-semibold text-gray-900 mb-2">
+                                    {paymentType === 'training' ? paymentItem.title : paymentItem.facility}
+                                </h3>
+                                <div className="flex items-center justify-between mt-4">
+                                    <span className="text-gray-600">Amount:</span>
+                                    <span className="text-2xl font-bold text-green-600">
+                                        {paymentItem.price} {paymentItem.currency}
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div className="space-y-4">
+                                <div>
+                                    <p className="text-sm font-semibold text-gray-900 mb-3">Select Payment Method</p>
+                                    <div className="space-y-3">
+                                        <div 
+                                            className={`flex items-center gap-3 p-3 border rounded-lg cursor-pointer transition-colors ${
+                                                selectedPaymentMethod === 'chapa' 
+                                                    ? 'border-blue-500 bg-blue-50' 
+                                                    : 'border-gray-200 hover:border-gray-300'
+                                            }`}
+                                            onClick={() => setSelectedPaymentMethod('chapa')}
+                                        >
+                                            <div className="w-5 h-5 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                                                {selectedPaymentMethod === 'chapa' && (
+                                                    <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                                                )}
+                                            </div>
+                                            <div className="flex-1">
+                                                <p className="font-semibold text-gray-900">Chapa</p>
+                                                <p className="text-sm text-gray-600">Pay with credit/debit cards, mobile banking</p>
+                                            </div>
+                                            <CreditCard className="h-5 w-5 text-blue-600" />
+                                        </div>
+                                        
+                                        <div 
+                                            className={`flex items-center gap-3 p-3 border rounded-lg cursor-pointer transition-colors ${
+                                                selectedPaymentMethod === 'telebirr' 
+                                                    ? 'border-green-500 bg-green-50' 
+                                                    : 'border-gray-200 hover:border-gray-300'
+                                            }`}
+                                            onClick={() => setSelectedPaymentMethod('telebirr')}
+                                        >
+                                            <div className="w-5 h-5 rounded-full border-2 border-green-500 flex items-center justify-center">
+                                                {selectedPaymentMethod === 'telebirr' && (
+                                                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                                )}
+                                            </div>
+                                            <div className="flex-1">
+                                                <p className="font-semibold text-gray-900">Telebirr</p>
+                                                <p className="text-sm text-gray-600">Pay with Telebirr mobile wallet</p>
+                                            </div>
+                                            <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                                                <span className="text-white text-xs font-bold">T</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="bg-blue-50 p-4 rounded-lg">
+                                <p className="text-sm text-blue-800">
+                                    By clicking "Confirm Payment", you agree to complete the payment for this {paymentType === 'training' ? 'training program' : 'facility rental'} using {selectedPaymentMethod === 'chapa' ? 'Chapa' : 'Telebirr'}.
+                                </p>
+                            </div>
+                            
+                            <div className="flex justify-end gap-4 pt-4">
+                                <Button 
+                                    variant="outline" 
+                                    onClick={() => {
+                                        setShowPaymentDialog(false);
+                                        setSelectedPaymentMethod('chapa'); // Reset to default
+                                    }}
+                                >
+                                    Cancel
+                                </Button>
+                                <Button 
+                                    className="bg-green-600 hover:bg-green-700"
+                                    onClick={handleConfirmPayment}
+                                >
+                                    Confirm Payment with {selectedPaymentMethod === 'chapa' ? 'Chapa' : 'Telebirr'}
                                 </Button>
                             </div>
                         </div>
