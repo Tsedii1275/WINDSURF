@@ -41,7 +41,6 @@ export function PublicLayout() {
                                 </>
                             ) : (
                                 <>
-                                    <Link to="/public/registration" className="text-sm font-bold text-gray-700 hover:text-aau-blue transition-colors">REGISTRATION</Link>
                                     <Button asChild variant="outline" className="border-aau-blue text-aau-blue hover:bg-aau-blue hover:text-white rounded-none border-2 px-6 h-10">
                                         <Link to="/login" className="font-bold uppercase tracking-wider text-xs">Login</Link>
                                     </Button>
