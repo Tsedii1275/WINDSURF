@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { GraduationCap, Building, ClipboardCheck, ArrowRight, Users, Calendar, MapPin, CheckCircle, Loader2 } from "lucide-react";
+import { GraduationCap, Building, ClipboardCheck, ArrowRight, Users, Calendar, MapPin, CheckCircle, UserPlus, CheckCircle2, Lock } from "lucide-react";
 
 const PublicHome = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -187,6 +187,64 @@ const PublicHome = () => {
                             <div className="text-5xl font-bold text-purple-600 mb-6">1000+</div>
                             <h3 className="text-2xl font-semibold text-gray-900 mb-2">Active Users</h3>
                             <p className="text-lg text-gray-600">Satisfied students</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Signup Card Section */}
+            <section className="py-20 bg-white">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-6">New to AAU?</h2>
+                        <p className="text-lg text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+                            Create your account to access exclusive training programs and state-of-the-art facilities.
+                        </p>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-8">
+                        <div className="bg-blue-50 rounded-2xl p-8 border-2 border-blue-200">
+                            <div className="text-center mb-6">
+                                <UserPlus className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Create Account</h3>
+                                <p className="text-gray-600">Join our community and start your journey</p>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="text-sm text-gray-600 mb-2">
+                                    <span className="font-semibold">✓ Track Applications</span>
+                                    <p className="text-xs">Monitor your training requests</p>
+                                </div>
+                                <div className="text-sm text-gray-600 mb-2">
+                                    <span className="font-semibold">✓ Reserve Facilities</span>
+                                    <p className="text-xs">Book venues and equipment</p>
+                                </div>
+                                <div className="text-sm text-gray-600 mb-2">
+                                    <span className="font-semibold">✓ Access Resources</span>
+                                    <p className="text-xs">Digital learning materials</p>
+                                </div>
+                            </div>
+                            <div className="text-center mt-6">
+                                <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-8 py-4 font-bold transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+                                    <Link to="/public/registration" className="flex items-center gap-3">
+                                        <UserPlus className="h-5 w-5" />
+                                        Create Your Account
+                                    </Link>
+                                </Button>
+                            </div>
+                        </div>
+                        <div className="bg-green-50 rounded-2xl p-8 border-2 border-green-200">
+                            <div className="text-center mb-6">
+                                <CheckCircle2 className="h-12 w-12 text-green-600 mx-auto mb-4" />
+                                <h3 className="text-2xl font-bold text-gray-900 mb-2">Already Have an Account?</h3>
+                                <p className="text-gray-600">Sign in to access your personalized dashboard</p>
+                            </div>
+                            <div className="text-center mt-6">
+                                <Button asChild variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 rounded-xl px-8 py-4 font-bold transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105">
+                                    <Link to="/login" className="flex items-center gap-3">
+                                        <Users className="h-5 w-5" />
+                                        Sign In
+                                    </Link>
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>
